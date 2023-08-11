@@ -1,0 +1,34 @@
+﻿<Window x:Class="DirectoryMonitor.Client.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DirectoryMonitor.Client"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition />
+		</Grid.ColumnDefinitions>
+
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+		<StackPanel Grid.Row="0" Margin="10" Orientation="Horizontal" VerticalAlignment="Center">
+			<ComboBox Name="CmbDrives" VerticalContentAlignment="Center" Width="50"></ComboBox>
+			<Button Name="BtnStart" Click="BtnStart_Click" Width="80" Height="40" Margin="10 0 10 0">Start</Button>
+			<Button Click="ButtonStop_Click" Width="80" Height="40">Stop</Button>
+			<TextBlock VerticalAlignment="Center" Margin="10 0 0 0" FontSize="20" Name="TxtStatus"></TextBlock>
+		</StackPanel>
+		<ListView Grid.Row="1" Name="ListViewDirectories" ScrollViewer.CanContentScroll="True">
+			<ListView.View>
+				<GridView>
+					<GridViewColumn Header="Path" DisplayMemberBinding="{Binding Path}" Width="500" />
+					<GridViewColumn Header="Files Count" DisplayMemberBinding="{Binding TotalFileCount}" Width="100" />
+					<GridViewColumn Header="Files Size" DisplayMemberBinding="{Binding TotalFileSize}" Width="100" />
+				</GridView>
+			</ListView.View>
+		</ListView>
+	</Grid>
+</Window>
